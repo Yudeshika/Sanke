@@ -97,17 +97,17 @@ contactForm.addEventListener('submit', function(event) {
 });
 
 // Fetch a random quote from Quotable API
-function fetchQUote() {
+function fetchQuote() {
     fetch('https://api.freeapi.app/api/v1/public/quotes/quote/random')
     .then(function(response) {
         return response.json();
     })
-    .then(function(content) {
-        document.getElementById('quote-text').textContent = '"' + content.data.content + '"';
-        document.getElementById('quote-author').textContent = '"' + content.data.author + '"';
+    .then(function(quoteResponse) {
+        document.getElementById('quote-text').textContent = '"' + quoteResponse.data.content + '"';
+        document.getElementById('quote-author').textContent = '-' + quoteResponse.data.author + '-';
     })
 }
 
-fetchQUote(); // Load a quote when the page loads
+fetchQuote(); // Load a quote when the page loads
 
-document.getElementById('new-quote-btn').addEventListener('click', fetchQUote);
+document.getElementById('new-quote-btn').addEventListener('click', fetchQuote);
